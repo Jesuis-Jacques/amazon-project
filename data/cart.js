@@ -4,7 +4,7 @@ if (!cart) {
   cart = [];
 };
 
-function saveToStorage() {
+export function saveToStorage() {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
@@ -53,4 +53,12 @@ export function calculateCartQuantity () {
   return cartQuantity;
 }
 
-console.log(calculateCartQuantity());
+export function updateQuantity(productId, newQuantity) {
+
+  cart.forEach((cartItem) => {
+    if (cartItem.productId === productId) {
+      cartItem.quantity = newQuantity;
+    }
+  })
+  
+}
