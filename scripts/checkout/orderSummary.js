@@ -3,10 +3,13 @@ import {products, getProduct} from '../../data/products.js';
 import { formatCurrency} from '../utils/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions, getDeliveryOption} from '../../data/delivery-options.js';
+import {renderPaymentSummary} from './paymentSummary.js';
 
+/* This lines of code was to practise the use of dayjs
 const today = dayjs();
 const deliveryDate = today.add(7, 'days');
 deliveryDate.format('dddd, MMMM D');
+*/
 
 export function renderOrderSummary() {
 
@@ -167,6 +170,8 @@ export function renderOrderSummary() {
         
         saveToStorage();
         updateCartQuantity();
+
+        renderPaymentSummary();
       })
     })
   }
@@ -182,6 +187,8 @@ export function renderOrderSummary() {
         container.remove();
 
         updateCartQuantity();
+
+        renderPaymentSummary();
       });
     });
 
@@ -204,6 +211,7 @@ export function renderOrderSummary() {
         const {productId, deliveryOptionId} = element.dataset;
         updateDeliveryOption(productId, deliveryOptionId);
         renderOrderSummary();
+        renderPaymentSummary();
       });
     });
 }
