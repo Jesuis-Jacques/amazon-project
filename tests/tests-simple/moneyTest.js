@@ -1,4 +1,4 @@
-import formatCurrency from '../scripts/utils/money.js';
+import formatCurrency from '../../scripts/utils/money.js';
 
 /* to group test cases together as one - create a test suite */
 
