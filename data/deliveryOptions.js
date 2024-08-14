@@ -40,8 +40,6 @@ export function calculateDeliveryDate(deliveryOption) {
 
     if (!isWeekend(deliveryDate)) {
       remainingDays--;
-      console.log(deliveryDate);
-      console.log(remainingDays);
     }
   }
 
