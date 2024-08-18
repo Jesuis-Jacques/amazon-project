@@ -8,9 +8,25 @@ import {loadCart} from '../data/cart.js';
 //import '../data/backend-practice.js';
 //import '../data/car.js';
 
+async function loadPage() {
+  await loadProductsFetch();
+
+  const value = await new Promise((resolve) => {
+    loadCart(() => {
+      resolve('value3');
+    });
+  });
+
+  renderCheckoutHeader();
+  renderOrderSummary();
+  renderPaymentSummary();
+}
+loadPage(); 
+
 
 //Promise.all receives a list of promises to run before running any other in .then()
 
+/*
 Promise.all([
   loadProductsFetch(),
   new Promise((resolve) => {
@@ -25,6 +41,8 @@ Promise.all([
   renderOrderSummary();
   renderPaymentSummary();
 });
+*/
+
 
 /*
 new Promise(() => {
