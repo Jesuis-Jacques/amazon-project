@@ -9,13 +9,21 @@ import {loadCart} from '../data/cart.js';
 //import '../data/car.js';
 
 async function loadPage() {
-  await loadProductsFetch();
+  try {
+    // throw 'error1; --> goes into catch from here
 
-  const value = await new Promise((resolve) => {
-    loadCart(() => {
-      resolve('value3');
+    await loadProductsFetch();
+
+    const value = await new Promise((resolve, reject) => {
+      loadCart(() => {
+        // reject('error3') --> goes into catch too and works in the future unlike throw
+        resolve('value3');
+      });
     });
-  });
+
+  } catch (error) {
+    console.log('unexpected error, Please try again later.');
+  }
 
   renderCheckoutHeader();
   renderOrderSummary();
